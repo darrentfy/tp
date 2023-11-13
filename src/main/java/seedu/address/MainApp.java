@@ -83,7 +83,7 @@ public class MainApp extends Application {
                 logger.info("Creating a new data file " + storage.getWellNusFilePath()
                         + " populated with a sample AddressBook.");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleWellNus);
         } catch (DataLoadingException e) {
             logger.warning("Data file at " + storage.getWellNusFilePath() + " could not be loaded."
                     + " Will be starting with an empty AddressBook.");

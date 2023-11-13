@@ -73,7 +73,7 @@ public class SampleDataUtil {
     }
 
 
-    public static ReadOnlyWellNus getSampleAddressBook() {
+    public static ReadOnlyWellNus getSampleWellNus() {
         WellNus sampleAb = new WellNus();
         for (Student sampleStudent : getSampleStudents()) {
             sampleAb.addStudent(sampleStudent);

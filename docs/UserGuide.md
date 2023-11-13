@@ -121,8 +121,8 @@ To see a list of all command words, refer to the [Command Summary](#5-command-su
 ### 1.3 About student notes
 
 Student notes of a student can be viewed by double-clicking on the specific student that you want under the "Student"
-column. You can only view student notes for one student at a time. When you perform any commands, the notes column
-will be cleared (You will have to double-click once again).
+column. You can only view student notes for one student at a time. You can refer to the following diagrams below for reference.
+When you perform any commands, the notes column will be cleared (You will have to double-click once again). 
 
 If you have any feedback on our features pertaining to student notes, feel free to send your feedback to the 
 developer team!
@@ -197,7 +197,7 @@ Invalid examples:
 If you know the name of the student you want to delete, use the `find` command to filter the student list first.
 </div>
 
-#### 2.2.3 Adding notes for a Student: `note`
+#### 2.2.3 Adding/Deleting notes for a Student: `note`
 
 <div markdown="block" class="alert alert-info">
 
@@ -206,7 +206,8 @@ Double-clicking on the Student card displays the Student notes under the Notes s
 The “Notes” column will inform you if there are no student notes for a particular Student.
 </div>
 
-Adds a note to an existing student, overwrites any existing note.
+This command either adds a note to an existing student (overwriting any existing note) or deletes a note
+depending on the command format given, as further shown in examples below
 
 Format: `note STUDENT_INDEX note/NOTE`
 
@@ -216,10 +217,11 @@ Format: `note STUDENT_INDEX note/NOTE`
    - Must be found in the students list
 2. Note
    - Maximum of 500 characters
+   - To be omitted if you want to delete note
 
 Valid examples:
 * `note 1 note/Preferred language: mandarin`
-* `note 2` (deletes the note at index 2)
+* `note 2` (deletes the note of student at index 2)
 
 Invalid examples:
 * `note 0` (invalid index)
@@ -265,7 +267,8 @@ Given a Student named `Roy Lee` is in the WellNUS student list:
 
 #### 2.2.5 Assigning risk level to Student: `tag`
 
-Tags a student to a specific risk level.
+This command either adds a tag to an existing student (overwriting any existing tag), or deletes a tag
+depending on the command format given, as further shown in examples below
 
 Format: `tag STUDENT_INDEX r/RISK_LEVEL`
 
@@ -276,10 +279,12 @@ Format: `tag STUDENT_INDEX r/RISK_LEVEL`
 2. Risk Level
    - Must be `high`, `medium`, or `low`
    - Case-insensitive, i.e. `HIGH` is a valid input
+   - To be omitted if you want to delete the tag
 
 Valid examples:
 * `tag 2 r/high`
 * `tag 1 r/MEDIUM`
+* `tag 3` (deletes the tag of student at index 3)
 
 Invalid examples:
 * `tag -1 r/high` (invalid index)
@@ -289,7 +294,7 @@ Invalid examples:
 
 Edit a student's contact number or address.
 
-Format `edit STUDENT_INDEX [c/CONTACT_NUMBER] [a/HOME_ADDRESS] [r/RISK_LEVEL]`
+Format `edit STUDENT_INDEX [c/CONTACT_NUMBER] [a/HOME_ADDRESS]`
 
 **Parameters**:
 1. Student Index
@@ -299,15 +304,10 @@ Format `edit STUDENT_INDEX [c/CONTACT_NUMBER] [a/HOME_ADDRESS] [r/RISK_LEVEL]`
    - Numbers only, must be 8 characters long
 3. Home Address 
    - Maximum of 200 characters, cannot be blank
-4. Risk Level
-   - Must be `high`, `medium`, or `low`
-   - Case-insensitive, i.e. `HIGH` is a valid input
+
 
 <div markdown="block" class="alert alert-info">
 **:information_source: Note:**<br>
-
-- The `tag STUDENT_INDEX r/RISK_LEVEL` command is equivalent to `edit STUDENT_INDEX r/RISK_LEVEL`.
-
 - Providing the same field as before (eg. changing contact from 99998888 to 99998888) will not throw an error
 </div>
 

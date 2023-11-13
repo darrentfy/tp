@@ -133,7 +133,7 @@
 }
 
 .column_title {
-    -fx-alignment: top;
+    -fx-alignment: center;
     -fx-font-family: "Segoe UI Semibold";
     -fx-font-size: 22px;
     -fx-text-fill: white;
