@@ -18,7 +18,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div style="page-break-after: always;"></div>
 
-### 2. Design
+## 2. Design
 
 <div markdown="span" class="alert alert-primary">
 
@@ -169,9 +169,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 ![Interactions inside the Logic component for "cancel 1" command](images/CancelSequenceDiagram.png)
 
-#### Design Considerations:
-
-**Aspect: How an Appointment should be canceled**
+**Design Considerations: How an Appointment should be canceled**
 
 * **Current Choice:** Create a new `CancelCommand` class which handles the cancellation of an appointment.
     * Pros: User input will be shorter and easier to read.
@@ -191,9 +189,7 @@ taking `execute("note 1 note/Likes dogs.")` as an example.
 
 ![Interactions inside the Logic component for "note 1 note/Likes dogs." command](images/NoteSequenceDiagram.png)
 
-#### Design considerations:
-
-**Aspect: How a `Note` should be added to a `Student`**
+**Design Considerations: How a `Note` should be added to a `Student`**
 
 * **Alternative 1 (current choice):** Create a new `NoteCommand` class which handles the addition of a note
   to a `Student`.
