@@ -631,12 +631,30 @@ Specifically, the system had to be designed to prevent the scheduling of appoint
 Additionally, to maintain data integrity, the deletion of a student entity necessitated the simultaneous cancellation of all associated appointments.
 * In tackling these challenges, we leveraged existing components to streamline development efforts. 
 Recognising the `Person` entity in AB3, we opted to adapt the `Person` entity and repurpose to `Student` entity within WellNUS.
-* Another challenge we faced was designing a new `Appointment` entity from scratch. The process was challenging and required tedious class refactoring mid implementation.
+* Another challenge we faced was designing a new `Appointment` entity from scratch. The process was challenging and required tedious class refactoring mid-implementation.
 Initially, we designed `Appointment` to have an attribute `DateTime` to store the date and time of the appointment. 
 To facilitate the comparison of appointments and prevent overlaps and clashes, we soon realised there was a need for a start and end time.
 However, having `DateTime start` and `DateTime end` results in a duplication of date, as the appointment was bound to be on the same date. 
 Hence, we refactored `DateTime` into `Date` and `Time` to allow for 3 attributes: `Date appointmentDate`, `Time startTime`, `Time endTime`
+* For the UI of WellNUS, we were also unsure how to handle `Appointment` and `Note`, specifically, how these
+entities are to be displayed to the user. For `Appointment`, we settled on having an `Appointment` list similar to the
+`Person` list in AB3, and simultaneously display 2 lists for `Student` and `Appointment`. 
+* On the other hand, while we initially displayed `Note` under its corresponding `Student`, similar to `Remark` in
+AB3, we eventually decided against it. Our `Note` was designed for counsellors to make consultation notes in addition
+to remarks for students, and is usually much longer than a typical `Remark` in AB3, this led to each
+row in the `Student` list becoming much more cluttered and wordy. Eventually, we created a separate column that
+specifically displays a single `Note` of the user's choice. 
 
 ### 8.2 Technical Challenges
 
-
+* Since WellNUS manages both `Student` and `Appointment` entities, one of the challenges we faced was refactoring our
+`Storage` component to handle both entities simultaneously. While saving `Student` and `Appointment` data to the storage
+file was much easier since we could reference AB3's `Storage` component, loading data from file proved to be a much
+larger challenge. 
+* The loading in AB3 simply checks if there are any duplicate `Persons`, on the other hand, having
+an `Appointment` entity meant that, we had to perform checks for duplicate `Appointments`, overlapping `Appointments`
+and also whether the `Student` provided in the `Appointment` exists in the given WellNUS data file.
+* In addition, because we decided to refactor `Person` in AB3 into `Student`, the initial refactoring for `Person` was
+tedious and proved to be a challenge. Removing redundant fields like `Email` and `Tags` and adding fields like `RiskLevel`
+and `Note` meant that a large portion of the AB3 had to be refactored, since the majority of the code in AB3 involved
+the `Person` entity, including tests, sample data and UI.
