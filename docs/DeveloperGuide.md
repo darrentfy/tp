@@ -18,7 +18,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 <div style="page-break-after: always;"></div>
 
-### 2. Design
+## 2. Design
 
 <div markdown="span" class="alert alert-primary">
 
@@ -169,9 +169,7 @@ The sequence diagram below illustrates the interactions within the `Logic` compo
 
 ![Interactions inside the Logic component for "cancel 1" command](images/CancelSequenceDiagram.png)
 
-#### Design Considerations:
-
-**Aspect: How an Appointment should be canceled**
+**Design Considerations: How an Appointment should be canceled**
 
 * **Current Choice:** Create a new `CancelCommand` class which handles the cancellation of an appointment.
     * Pros: User input will be shorter and easier to read.
@@ -191,9 +189,7 @@ taking `execute("note 1 note/Likes dogs.")` as an example.
 
 ![Interactions inside the Logic component for "note 1 note/Likes dogs." command](images/NoteSequenceDiagram.png)
 
-#### Design considerations:
-
-**Aspect: How a `Note` should be added to a `Student`**
+**Design Considerations: How a `Note` should be added to a `Student`**
 
 * **Alternative 1 (current choice):** Create a new `NoteCommand` class which handles the addition of a note
   to a `Student`.
@@ -223,6 +219,26 @@ but due to a limitation of PlantUML, the 4 branches leads to the "end" individua
 </div>
 
 <div style="page-break-after: always;"></div>
+
+The adding of student notes is facilitated by `NoteCommand`. It extends `Command` and allows the addition of a `Note`
+to the student at the index specified by the user.
+
+The sequence diagram below illustrates the interactions within the `Logic` component, 
+taking `execute("note 1 note/Likes dogs.")` as an example.
+
+![Interactions inside the Logic component for "note 1 note/Likes dogs." command](images/NoteSequenceDiagram.png)
+
+**Design Considerations: How a `Note` should be added to a `Student`**
+
+* **Alternative 1 (current choice):** Create a new `NoteCommand` class which handles the addition of a note 
+to a `Student`.
+    * Pros: User input will be shorter in length and easier to read
+    * Cons: More work to implement
+
+* **Alternative 2:** Add `Note` as a field in the `AddCommand`
+    * Pros: Easier to implement
+    * Cons: User will have to type much longer commands, since `Note` can be up to 200 characters long,
+  leads to very lengthy commands
 
 ### 3.4 Check overlapping appointments feature
 
